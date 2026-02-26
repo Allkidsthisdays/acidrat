@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анастасия Харитонова — Стратегия и дизайн</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Onest:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    :root {
+      --bg: #0e0c0a;
+      --bg2: #131109;
+      --surface: #1a1712;
+      --border: #2a2620;
+      --accent: #c5aa76;
+      --accent2: #e8d5b0;
+      --text: #f0ebe0;
+      --muted: #7a7060;
+      --muted2: #4a4438;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Onest', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(14, 12, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 56px;
+      width: 112px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 4rem 6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 5.5vw, 80px);
+      font-weight: 600;
+      line-height: 90px;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 2rem;
+    }
+
+    .hero-name em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #a09880;
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 2px;
+      width: fit-content;
+      transition: all 0.25s ease;
+    }
+
+    .hero-cta:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201, 169, 110, 0.25);
+    }
+
+    .hero-photo {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      z-index: 1;
+    }
+
+    .hero-scroll span {
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--muted2);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 7rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    /* ─── STATS ─── */
+    .stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      padding: 3rem;
+      background: var(--bg);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.4s ease;
+    }
+
+    .service-card:hover {
+      background: var(--surface);
+    }
+
+    .service-card:hover::before {
+      height: 100%;
+    }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--muted2);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ─── EXPERIENCE ─── */
+    .experience {
+      background: var(--bg2);
+    }
+
+    .exp-items {
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .exp-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-company {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-role {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-period {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .exp-desc {
+      font-size: 0.92rem;
+      color: #8a8070;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .exp-awards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .award-tag {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      position: relative;
+      border-radius: 2px;
+    }
+
+    .testimonial::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.2;
+      position: absolute;
+      top: 1rem;
+      left: 2rem;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: #9a9080;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .author-name {
+      font-weight: 500;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .author-title {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ─── MANIFESTO ─── */
+    .manifesto {
+      background: var(--bg2);
+    }
+
+    .manifesto-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--accent2);
+      line-height: 1.5;
+      max-width: 780px;
+      margin: 3rem 0;
+      padding-left: 2rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .manifesto-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-bottom: 5rem;
+      font-weight: 300;
+    }
+
+    .acidrat-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    .acidrat-item {
+      background: var(--bg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.25s;
+    }
+
+    .acidrat-item:hover {
+      background: var(--surface);
+    }
+
+    .acidrat-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .acidrat-word {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .acidrat-desc {
+      font-size: 0.75rem;
+      color: #605850;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      text-align: center;
+      padding: 8rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      height: 60vh;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .cta-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.75rem;
+      font-family: 'Onest', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(201, 169, 110, 0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-name img {
+      height: 56px;
+      width: 112px;
+      object-fit: contain;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--muted2);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .fade-in:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .fade-in:nth-child(4) {
+      transition-delay: 0.3s;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-section {
+      padding: 2rem 4rem 5rem;
+    }
+
+    .gallery-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      height: auto;
+      width: 100%;
+    }
+
+    .gallery-slider.swiper-initialized .gallery-wrapper {
+      display: flex;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      height: auto;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 5rem 1.5rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 8rem 1.5rem 4rem;
+      }
+
+      .hero-photo {
+        display: none;
+      }
+
+      .hero-scroll {
+        left: 1.5rem;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem 1.5rem;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat:nth-child(odd) {
+        border-right: 1px solid var(--border);
+      }
+
+      .stat:last-child,
+      .stat:nth-last-child(2) {
+        border-bottom: none;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-section {
+        padding: 2rem 1.5rem 4rem;
+      }
+
+      .gallery-slider {
+        height: auto;
+      }
+
+      .acidrat-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      footer {
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#"><img src="assets/logo.png" alt="acidrat"></a>
+    <ul class="nav-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#experience">Опыт</a></li>
+      <li><a href="#testimonials">Отзывы</a></li>
+      <li><a href="#manifesto">Манифест</a></li>
+      <li><a href="#cta">Контакт</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-tag">Стратегия и дизайн</p>
+      <h1 class="hero-name">Анастасия<br><em>Харитонова</em></h1>
+      <p class="hero-desc">Помогаю компаниям расти через стратегию и продуманный дизайн. Была дизайн-директором Retail в
+        Райффайзен Банке и руководила UX/UI в Росбанке. Формировала команды, запускала продукты, вела масштабные
+        редизайны.</p>
+      <a href="https://t.me/Acid_Rat" target="_blank" class="hero-cta">
+        Записаться на консультацию
+        <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+          <path
+            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-photo">
+      <img src="assets/main.png" alt="Анастасия Харитонова">
+    </div>
+
+    <div class="hero-scroll">
+      <span></span>Листать вниз
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat fade-in">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">лет в цифровых продуктах</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">лет в роли директора</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-num">2</div>
+      <div class="stat-label">федеральных банка</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">энергии на ваше развитие</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="section-label">Чем могу помочь</p>
+    <h2 class="section-title">Стратегия,<br>которая учитывает всё</h2>
+
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <span class="service-num">01</span>
+        <h3 class="service-title">Продуктовое видение и клиентский опыт</h3>
+        <p class="service-desc">Оценю ваш продукт глазами клиента и найду слабые точки. Честно объясню, что мешает им
+          выбирать вас и платить больше. Вы узнаете, как через дизайн транслировать ваши главные преимущества.</p>
+      </div>
+      <div class="service-card fade-in">
+        <span class="service-num">02</span>
+        <h3 class="service-title">Стратегия роста продукта</h3>
+        <p class="service-desc">Создаю новое видение продукта и стратегию его роста, объединяя разные инструменты и
+          подходы. Помогу найти связь между тем, что вы хотите донести, и тем, что видит пользователь.</p>
+      </div>
+      <div class="service-card fade-in">
+        <span class="service-num">03</span>
+        <h3 class="service-title">Построение команды</h3>
+        <p class="service-desc">Настрою взаимодействие между бизнесом, разработкой и дизайн-командой так, чтобы решения
+          принимались бесшовно и без тысячи и одного согласования. Правильная организация людей — одна из самых сложных
+          задач для руководителя.</p>
+      </div>
+      <div class="service-card fade-in">
+        <span class="service-num">04</span>
+        <h3 class="service-title">Дизайн и проектирование</h3>
+        <p class="service-desc">Можно прийти с любым запросом: от цифровых интерфейсов IT-продукта до брендбуков и
+          промышленного дизайна. Работаю с техническими проектами вне зависимости от масштаба и сложности.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery-section">
+    <div class="swiper gallery-slider">
+      <div class="swiper-wrapper gallery-wrapper">
+        <div class="swiper-slide gallery-item fade-in">
+          <img src="assets/s1.jpg" alt="Проект 1">
+        </div>
+        <div class="swiper-slide gallery-item fade-in">
+          <img src="assets/s2.jpg" alt="Проект 2">
+        </div>
+        <div class="swiper-slide gallery-item fade-in">
+          <img src="assets/s3.jpg" alt="Проект 3">
+        </div>
+        <div class="swiper-slide gallery-item fade-in">
+          <img src="assets/s4.jpg" alt="Проект 4">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="experience">
+    <p class="section-label">Где я работала</p>
+    <h2 class="section-title">Опыт, который<br>я подарю вам</h2>
+
+    <div class="exp-items">
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-company">Райффайзен Банк</div>
+          <div class="exp-role">Дизайн-директор Retail</div>
+          <div class="exp-period">до 2024</div>
+        </div>
+        <div class="exp-content">
+          <p class="exp-desc">Руководила полным редизайном Райффайзен Онлайн — с командой придумали новый дизайн-язык
+            для всех мобильных интерфейсов банка. Выстроила процессы взаимодействия с продуктом, IT и бизнесом,
+            синхронизировала 13 продуктовых команд. Создала первую в России карту компетенций дизайнеров дизайн-систем
+            совместно с Samokat Tech.</p>
+          <div class="exp-awards">
+            <span class="award-tag">3 золота Tagline Awards</span>
+            <span class="award-tag">3 серебра Tagline Awards</span>
+            <span class="award-tag">Бронза Tagline</span>
+            <span class="award-tag">Золото «Среды»</span>
+            <span class="award-tag">Серебро «Среды»</span>
+            <span class="award-tag">Шорт-лист G8</span>
+            <span class="award-tag">Рейтинг Рунета</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-company">Росбанк Societe Generale</div>
+          <div class="exp-role">Руководитель UX/UI и клиентоцентричных практик</div>
+          <div class="exp-period">Август 2019 — Январь 2022</div>
+        </div>
+        <div class="exp-content">
+          <p class="exp-desc">Лидировала чаптер UX/UI дизайнеров и исследователей в розничном блоке: 13 направлений, 22
+            agile-команды. За три года прошла путь от построения команды до создания стратегии. Объединили интерфейсы,
+            выстроили культуру исследований и заложили основу клиентоцентричности.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <p class="section-label">Говорят обо мне</p>
+    <h2 class="section-title">Отзывы</h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial fade-in">
+        <p class="testimonial-text">Анастасия выступила как лидер, способный объединить команды и организовать процесс
+          на высочайшем уровне. Она разработала концепт, выстроила эффективное взаимодействие между продуктовыми
+          командами, донесла важность редизайна до стейкхолдеров и заложила основу для долгосрочного развития
+          продуктового дизайна в банке.<br><br>Анастасия — сильный лидер, который умеет не только видеть картину
+          целиком, но и доводить проекты до результата с безупречным качеством. По результатам проекта мы получили 9
+          наград за лучший дизайн приложения на рынке, рост NPS и прирост активных пользователей.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img src="assets/avatar-vl.png" alt="Виталий Лавринец"></div>
+          <div>
+            <div class="author-name">Виталий Лавринец</div>
+            <div class="author-title">Managing Director, Райффайзен Банк</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial fade-in">
+        <p class="testimonial-text">Анастасия взяла на себя ответственность за формирование стратегии клиентского опыта,
+          построила команду дизайнеров и исследователей, внедрила практики клиентоцентричного подхода и сумела изменить
+          культуру внутри организации.<br><br>Считаю её одним из ключевых драйверов трансформации клиентского опыта в
+          Росбанке.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img src="assets/avatar-al.png" alt="Алексей Лола"></div>
+          <div>
+            <div class="author-name">Алексей Лола</div>
+            <div class="author-title">Член Правления, Head of Retail, Росбанк</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section id="manifesto" class="manifesto">
+    <p class="section-label">Мои принципы</p>
+    <h2 class="section-title">Манифест</h2>
+
+    <blockquote class="manifesto-quote">
+      «Если вам нужен дизайн ради дизайна, нам точно не по пути. Я хочу помогать людям и бизнесу становиться лучше.
+      Изменения в процессах потребуют включённости в нашу совместную работу».
+    </blockquote>
+
+    <p class="manifesto-sub">Считаю важным, чтобы компании, с которыми я работаю, стремились создавать что-то значимое
+      для клиента. Я верю, что через своё участие влияю на мир и людей. Готова начать работу, если вы готовы менять
+      старые правила и строить осмысленный продукт.</p>
+
+    <p class="section-label" style="margin-bottom:2rem">Мой системный подход — ACIDRAT</p>
+
+    <div class="acidrat-grid">
+      <div class="acidrat-item">
+        <span class="acidrat-letter">A</span>
+        <span class="acidrat-word">Authenticity</span>
+        <p class="acidrat-desc">Отмечать сильные стороны и признавать слабости. Без маски эксперта.</p>
+      </div>
+      <div class="acidrat-item">
+        <span class="acidrat-letter">C</span>
+        <span class="acidrat-word">Coaching</span>
+        <p class="acidrat-desc">Помогать команде раскрывать потенциал, а не просто закрывать задачи.</p>
+      </div>
+      <div class="acidrat-item">
+        <span class="acidrat-letter">I</span>
+        <span class="acidrat-word">Inspiration</span>
+        <p class="acidrat-desc">Вдохновлять и задавать ориентир. Первым к нему идти.</p>
+      </div>
+      <div class="acidrat-item">
+        <span class="acidrat-letter">D</span>
+        <span class="acidrat-word">Design</span>
+        <p class="acidrat-desc">Эстетика и создание нового. Дизайн начинается с понимания потребности.</p>
+      </div>
+      <div class="acidrat-item">
+        <span class="acidrat-letter">R</span>
+        <span class="acidrat-word">Responsibility</span>
+        <p class="acidrat-desc">Ответственность от идеи до финальной точки.</p>
+      </div>
+      <div class="acidrat-item">
+        <span class="acidrat-letter">A</span>
+        <span class="acidrat-word">Aspiration</span>
+        <p class="acidrat-desc">Помнить, что всегда есть следующий уровень.</p>
+      </div>
+      <div class="acidrat-item">
+        <span class="acidrat-letter">T</span>
+        <span class="acidrat-word">Transformation</span>
+        <p class="acidrat-desc">Желание менять мир вокруг и развиваться внутри.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="cta-section">
+    <h2 class="cta-title">Поговорим<em>?</em></h2>
+    <p class="cta-sub">Просто расскажите, что происходит в вашей компании — и я скажу, могу ли помочь и как именно.</p>
+
+    <div class="cta-buttons">
+      <a href="https://t.me/Acid_Rat" target="_blank" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+        </svg>
+        Написать в Telegram
+      </a>
+
+      <a href="https://t.me/acidrat_leads" target="_blank" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+        </svg>
+        Telegram-канал
+      </a>
+
+      <a href="https://www.linkedin.com/in/anastasiadesign" target="_blank" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name"><img src="assets/logo.png" alt="acidrat"></span>
+    <span class="footer-copy">Дизайн-директор · Стратег · Партнёр</span>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Swiper init for mobile gallery
+    let swiperInstance = null;
+    function initSwiper() {
+      const mobileBreakpoint = 900;
+      const sliderEl = document.querySelector('.gallery-slider');
+
+      if (window.innerWidth <= mobileBreakpoint && !swiperInstance) {
+        swiperInstance = new Swiper(sliderEl, {
+          slidesPerView: 2,
+          spaceBetween: 16,
+          breakpoints: {
+            0: {
+              slidesPerView: 2,
+              spaceBetween: 8
+            },
+            600: {
+              slidesPerView: 2,
+              spaceBetween: 16
+            }
+          }
+        });
+      } else if (window.innerWidth > mobileBreakpoint && swiperInstance) {
+        swiperInstance.destroy(true, true);
+        swiperInstance = null;
+      }
+    }
+
+    initSwiper();
+    window.addEventListener('resize', initSwiper);
+  </script>
+</body>
+
+</html>
