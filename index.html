@@ -5,12 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Анастасия Харитонова — Стратегия и дизайн</title>
-  <link rel="icon" type="image/png" href="favicon.png">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Onest:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <style>
     :root {
       --bg: #0e0c0a;
@@ -91,6 +88,34 @@
 
     .nav-links a:hover {
       color: var(--accent);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--text);
+      transition: 0.3s;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
 
     /* ─── HERO ─── */
@@ -198,7 +223,7 @@
 
     .hero-photo img {
       width: 100%;
-      max-width: 600px;
+      max-width: 500px;
       height: auto;
       display: block;
     }
@@ -736,10 +761,6 @@
       width: 100%;
     }
 
-    .gallery-slider.swiper-initialized .gallery-wrapper {
-      display: flex;
-    }
-
     .gallery-item {
       position: relative;
       overflow: hidden;
@@ -759,8 +780,28 @@
         padding: 1rem 1.5rem;
       }
 
+      .nav-toggle {
+        display: flex;
+      }
+
       .nav-links {
-        display: none;
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(14, 12, 10, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease;
+      }
+
+      .nav-links.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
 
       section {
@@ -773,15 +814,22 @@
       }
 
       .hero-content {
-        padding: 8rem 1.5rem 4rem;
+        padding: 5rem 1.5rem 2rem;
       }
 
       .hero-photo {
-        display: none;
+        display: flex;
+        padding: 0 1.5rem 4rem;
+        justify-content: center;
+      }
+
+      .hero-photo img {
+        max-width: 360px;
       }
 
       .hero-scroll {
         left: 1.5rem;
+        bottom: 1rem;
       }
 
       .stats {
@@ -820,12 +868,30 @@
         padding: 2rem 1.5rem 4rem;
       }
 
-      .gallery-slider {
-        height: auto;
+      .gallery-wrapper {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .acidrat-grid {
-        grid-template-columns: repeat(4, 1fr);
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        background: transparent;
+        border: none;
+      }
+
+      .acidrat-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .acidrat-item {
+        flex: 0 0 calc(80% - 1rem);
+        scroll-snap-align: start;
+        border: 1px solid var(--border);
+        border-radius: 4px;
       }
 
       footer {
@@ -833,6 +899,29 @@
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .hero-name {
+        line-height: 70px;
+        word-wrap: break-word;
+      }
+
+      .hero-tag {
+        margin-bottom: 1rem;
+      }
+
+      .hero-content {
+        padding: 3.5rem 2.5rem 2rem
+      }
+
+      .hero {
+        padding-left: 0;
+        padding-right: 0;
       }
     }
   </style>
@@ -843,7 +932,12 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#"><img src="assets/logo.png" alt="acidrat"></a>
-    <ul class="nav-links">
+    <div class="nav-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#services">Услуги</a></li>
       <li><a href="#experience">Опыт</a></li>
       <li><a href="#testimonials">Отзывы</a></li>
@@ -932,26 +1026,6 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section id="gallery" class="gallery-section">
-    <div class="swiper gallery-slider">
-      <div class="swiper-wrapper gallery-wrapper">
-        <div class="swiper-slide gallery-item fade-in">
-          <img src="assets/s1.jpg" alt="Проект 1">
-        </div>
-        <div class="swiper-slide gallery-item fade-in">
-          <img src="assets/s2.jpg" alt="Проект 2">
-        </div>
-        <div class="swiper-slide gallery-item fade-in">
-          <img src="assets/s3.jpg" alt="Проект 3">
-        </div>
-        <div class="swiper-slide gallery-item fade-in">
-          <img src="assets/s4.jpg" alt="Проект 4">
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- EXPERIENCE -->
   <section id="experience" class="experience">
     <p class="section-label">Где я работала</p>
@@ -991,6 +1065,20 @@
           <p class="exp-desc">Лидировала чаптер UX/UI дизайнеров и исследователей в розничном блоке: 13 направлений, 22
             agile-команды. За три года прошла путь от построения команды до создания стратегии. Объединили интерфейсы,
             выстроили культуру исследований и заложили основу клиентоцентричности.</p>
+        </div>
+      </div>
+      <div class="gallery-wrapper" style="margin-top: 2rem;">
+        <div class="gallery-item fade-in">
+          <img src="assets/s1.jpg" alt="Проект 1">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="assets/s2.jpg" alt="Проект 2">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="assets/s3.jpg" alt="Проект 3">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="assets/s4.jpg" alt="Проект 4">
         </div>
       </div>
     </div>
@@ -1167,8 +1255,23 @@
       }
     }
 
-    initSwiper();
-    window.addEventListener('resize', initSwiper);
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
   </script>
 </body>
 
