@@ -5,9 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Анастасия Харитонова — Стратегия и дизайн</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Onest:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     :root {
       --bg: #0e0c0a;
@@ -455,11 +458,21 @@
     }
 
     /* ─── TESTIMONIALS ─── */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+    .testimonials-swiper {
       margin-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .testimonials-swiper .swiper-slide {
+      height: auto;
+    }
+
+    .testimonials-swiper .swiper-pagination-bullet {
+      background: var(--muted);
+    }
+
+    .testimonials-swiper .swiper-pagination-bullet-active {
+      background: var(--accent);
     }
 
     .testimonial {
@@ -860,10 +873,6 @@
         gap: 1.5rem;
       }
 
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
       .gallery-section {
         padding: 2rem 1.5rem 4rem;
       }
@@ -916,7 +925,7 @@
       }
 
       .hero-content {
-        padding: 3.5rem 2.5rem 2rem
+        padding: 3.5rem 2.1rem 2rem
       }
 
       .hero {
@@ -942,7 +951,7 @@
       <li><a href="#experience">Опыт</a></li>
       <li><a href="#testimonials">Отзывы</a></li>
       <li><a href="#manifesto">Манифест</a></li>
-      <li><a href="#cta">Контакт</a></li>
+      <li><a href="#cta">Контакты</a></li>
     </ul>
   </nav>
 
@@ -1089,36 +1098,58 @@
     <p class="section-label">Говорят обо мне</p>
     <h2 class="section-title">Отзывы</h2>
 
-    <div class="testimonials-grid">
-      <div class="testimonial fade-in">
-        <p class="testimonial-text">Анастасия выступила как лидер, способный объединить команды и организовать процесс
-          на высочайшем уровне. Она разработала концепт, выстроила эффективное взаимодействие между продуктовыми
-          командами, донесла важность редизайна до стейкхолдеров и заложила основу для долгосрочного развития
-          продуктового дизайна в банке.<br><br>Анастасия — сильный лидер, который умеет не только видеть картину
-          целиком, но и доводить проекты до результата с безупречным качеством. По результатам проекта мы получили 9
-          наград за лучший дизайн приложения на рынке, рост NPS и прирост активных пользователей.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="assets/avatar-vl.png" alt="Виталий Лавринец"></div>
-          <div>
-            <div class="author-name">Виталий Лавринец</div>
-            <div class="author-title">Managing Director, Райффайзен Банк</div>
+    <div class="swiper testimonials-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide testimonial fade-in">
+          <p class="testimonial-text">Анастасия выступила как лидер, способный объединить команды и организовать процесс
+            на высочайшем уровне. Она разработала концепт, выстроила эффективное взаимодействие между продуктовыми
+            командами, донесла важность редизайна до стейкхолдеров и заложила основу для долгосрочного развития
+            продуктового дизайна в банке.<br><br>Анастасия — сильный лидер, который умеет не только видеть картину
+            целиком, но и доводить проекты до результата с безупречным качеством. По результатам проекта мы получили 9
+            наград за лучший дизайн приложения на рынке, рост NPS и прирост активных пользователей.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img src="assets/avatar-al.png" alt="Виталий Лавринец"></div>
+            <div>
+              <div class="author-name">Виталий Лавринец</div>
+              <div class="author-title">Managing Director, Райффайзен Банк</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="testimonial fade-in">
-        <p class="testimonial-text">Анастасия взяла на себя ответственность за формирование стратегии клиентского опыта,
-          построила команду дизайнеров и исследователей, внедрила практики клиентоцентричного подхода и сумела изменить
-          культуру внутри организации.<br><br>Считаю её одним из ключевых драйверов трансформации клиентского опыта в
-          Росбанке.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="assets/avatar-al.png" alt="Алексей Лола"></div>
-          <div>
-            <div class="author-name">Алексей Лола</div>
-            <div class="author-title">Член Правления, Head of Retail, Росбанк</div>
+        <div class="swiper-slide testimonial fade-in">
+          <p class="testimonial-text">Анастасия взяла на себя ответственность за формирование стратегии клиентского
+            опыта,
+            построила команду дизайнеров и исследователей, внедрила практики клиентоцентричного подхода и сумела
+            изменить
+            культуру внутри организации.<br><br>Считаю её одним из ключевых драйверов трансформации клиентского опыта в
+            Росбанке.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img src="assets/avatar-vl.png" alt="Алексей Лола"></div>
+            <div>
+              <div class="author-name">Алексей Лола</div>
+              <div class="author-title">Член Правления, Head of Retail, Росбанк</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide testimonial fade-in">
+          <p class="testimonial-text">Anastasia is a thoughtful and inspiring professional in design and customer
+            experience. At Rosbank, she played an
+            important role in driving our digital transformation, bringing a strong client-centric approach and building
+            teams that
+            truly made a difference. Her impact was clear, and working with her was a real pleasure</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img src="assets/1688319263047.jpeg" alt="Илья Поляков"></div>
+            <div>
+              <div class="author-name">Илья Поляков</div>
+              <div class="author-title">Ex-председатель Правления Росбанк,<br /> Deputy Head of Global Banking and
+                Advisory<br /> chez Societe Generale Corporate and
+                Investment Banking - SGCIB</div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="swiper-pagination"></div>
     </div>
   </section>
 
@@ -1128,7 +1159,8 @@
     <h2 class="section-title">Манифест</h2>
 
     <blockquote class="manifesto-quote">
-      «Если вам нужен дизайн ради дизайна, нам точно не по пути. Я хочу помогать людям и бизнесу становиться лучше.
+      «Если вам нужен дизайн ради дизайна, нам<br /> точно не по пути. Я хочу помогать людям и бизнесу становиться
+      лучше.
       Изменения в процессах потребуют включённости в нашу совместную работу».
     </blockquote>
 
@@ -1215,6 +1247,7 @@
     <span class="footer-copy">Дизайн-директор · Стратег · Партнёр</span>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     // Fade-in on scroll
     const observer = new IntersectionObserver((entries) => {
@@ -1228,32 +1261,21 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Swiper init for mobile gallery
-    let swiperInstance = null;
-    function initSwiper() {
-      const mobileBreakpoint = 900;
-      const sliderEl = document.querySelector('.gallery-slider');
-
-      if (window.innerWidth <= mobileBreakpoint && !swiperInstance) {
-        swiperInstance = new Swiper(sliderEl, {
+    // Swiper init for testimonials
+    new Swiper('.testimonials-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        900: {
           slidesPerView: 2,
-          spaceBetween: 16,
-          breakpoints: {
-            0: {
-              slidesPerView: 2,
-              spaceBetween: 8
-            },
-            600: {
-              slidesPerView: 2,
-              spaceBetween: 16
-            }
-          }
-        });
-      } else if (window.innerWidth > mobileBreakpoint && swiperInstance) {
-        swiperInstance.destroy(true, true);
-        swiperInstance = null;
+          spaceBetween: 32
+        }
       }
-    }
+    });
 
     // Mobile Menu Toggle
     const menuBtn = document.getElementById('mobile-menu');
